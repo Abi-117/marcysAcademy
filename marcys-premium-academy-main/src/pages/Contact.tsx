@@ -14,6 +14,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const Contact = () => {
   const [contactData, setContactData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const fetchContact = async () => {

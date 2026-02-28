@@ -187,7 +187,7 @@ const AdminAboutPage = () => {
             Hero Text
           </label>
           <input
-            className="border w-full p-2 rounded"
+            className="border w-full p-2 rounded text-black"
             value={about.heroText}
             onChange={(e) =>
               setAbout({
@@ -216,7 +216,7 @@ const AdminAboutPage = () => {
           {about.heroImage && (
             <img
               src={`${API_URL}/uploads/${about.heroImage}`}
-              className="w-48 mt-2 rounded"
+              className="w-48 mt-2 rounded "
               alt="Hero"
             />
           )}
@@ -224,7 +224,7 @@ const AdminAboutPage = () => {
 
         {/* Story */}
         <textarea
-          className="border w-full p-2 rounded mb-4"
+          className="border w-full p-2 rounded mb-4 text-black"
           value={about.story}
           onChange={(e) =>
             setAbout({
@@ -236,7 +236,7 @@ const AdminAboutPage = () => {
 
         {/* Mission */}
         <textarea
-          className="border w-full p-2 rounded mb-4"
+          className="border w-full p-2 rounded mb-4 text-black"
           value={about.mission}
           onChange={(e) =>
             setAbout({
@@ -248,7 +248,7 @@ const AdminAboutPage = () => {
 
         {/* Vision */}
         <textarea
-          className="border w-full p-2 rounded mb-6"
+          className="border w-full p-2 rounded mb-6 text-black"
           value={about.vision}
           onChange={(e) =>
             setAbout({

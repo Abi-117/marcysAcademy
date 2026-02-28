@@ -19,6 +19,7 @@ import leadRoutes from "./routes/leadRoutes.js";
 import contactRoutes from "./routes/contact.js";
 import enquiryRoutes from "./routes/enquiry.js";
 import performanceServicesRoutes from "./routes/performance.js";
+import programserviceRoutes from "./routes/programsectionRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -49,5 +50,6 @@ app.use("/api/leads", leadRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/enquiry", enquiryRoutes);
 app.use("/api/performance-services", performanceServicesRoutes);
+app.use("/api/program", programserviceRoutes);
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));

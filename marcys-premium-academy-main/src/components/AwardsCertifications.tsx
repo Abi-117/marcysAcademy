@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Award } from 'lucide-react';
 import SectionHeading from './SectionHeading';
-import awards1 from '@/assets/award.jpeg';
+import awards1 from '@/assets/award1.jpeg';
 import awards2 from '@/assets/awards-2.jpg';
 import awards3 from '@/assets/trinity.png';
 import awards4 from '@/assets/rsl.jpg';
@@ -41,13 +41,13 @@ const AwardsCertifications = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="aspect-video rounded-2xl overflow-hidden border border-gold/20 shadow-2xl">
-              <img
-                src={awards1}
-                alt="Academy Certifications"
-                className="w-full h-full object-cover"
-              />
-            </div>
+           <div className="overflow-hidden flex justify-center items-center">
+  <img
+    src={awards1}
+    alt="Academy Certifications"
+    className="w-full sm:w-auto h-64 sm:h-96 object-cover sm:pl-0"
+  />
+</div>
             <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gold/10 rounded-xl -z-10" />
           </motion.div>
 
@@ -64,12 +64,12 @@ const AwardsCertifications = () => {
                 className="premium-card rounded-xl p-6 flex items-start gap-4 group hover:border-gold/30 transition-all duration-300"
               >
                 <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors duration-300">
-  <img
-    src={cert.image} // ✅ use the card's own image
-    alt={cert.name}
-    className="w-full h-full object-cover rounded-full"
-  />
-</div>
+                  <img
+                    src={cert.image} // ✅ use the card's own image
+                    alt={cert.name}
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
 
 
                 <div>

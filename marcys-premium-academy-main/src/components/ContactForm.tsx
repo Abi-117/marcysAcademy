@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle, User, Phone, Mail, MessageSquare } from 'lucide-react';
+import { Send, CheckCircle, User, Phone, Mail, MessageSquare, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -15,26 +17,35 @@ const ContactForm = () => {
     phone: '',
     email: '',
     message: '',
+    appointmentDate: null as Date | null,
+    classMode: 'online',
   });
+  // Add state at the top of Contact component
+const [classMode, setClassMode] = useState('online');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
+    // Simulate form submission delay
     await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    // Format appointment date nicely
+    const formattedDate = formData.appointmentDate
+      ? formData.appointmentDate.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
+      : 'No date selected';
 
     // Create WhatsApp message with form data
     const whatsappMessage = encodeURIComponent(
-      `New Inquiry from Website:\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nMessage: ${formData.message}`
+      `New Inquiry from Website:\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nAppointment Date: ${formattedDate}\n\nMessage: ${formData.message}`
     );
-    
+
     // Open WhatsApp with the form data
     window.open(`https://wa.me/919025849150?text=${whatsappMessage}`, '_blank');
 
     setIsSubmitting(false);
     setIsSubmitted(true);
-    
+
     toast({
       title: "Message Sent!",
       description: "We'll get back to you shortly.",
@@ -43,7 +54,7 @@ const ContactForm = () => {
     // Reset form after delay
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: '', phone: '', email: '', message: '' });
+      setFormData({ name: '', phone: '', email: '', message: '', appointmentDate: null, classMode: 'online' });
     }, 3000);
   };
 
@@ -98,6 +109,7 @@ const ContactForm = () => {
       </div>
 
       <div className="space-y-5">
+        {/* Name */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -116,6 +128,7 @@ const ContactForm = () => {
           />
         </motion.div>
 
+        {/* Phone */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -135,6 +148,7 @@ const ContactForm = () => {
           />
         </motion.div>
 
+        {/* Email */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -153,11 +167,45 @@ const ContactForm = () => {
             className="pl-12 h-14 bg-background/50 border-gold/20 focus:border-gold rounded-xl transition-all duration-300"
           />
         </motion.div>
+        <div className="mb-8 max-w-md mx-auto">
+  <label htmlFor="classModeDropdown" className="block mb-2 text-sm font-medium text-muted-foreground">
+    Select Class Mode
+  </label>
+  <select
+    id="classModeDropdown"
+    value={classMode}
+    onChange={(e) => setClassMode(e.target.value)}
+    className="w-full h-14 rounded-xl border border-gold/20 bg-background/50 text-foreground px-4 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"
+  >
+    <option value="online">Online</option>
+    <option value="offline">Offline</option>
+  
+  </select>
+</div>
 
+        {/* Appointment Date */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+          <DatePicker
+            selected={formData.appointmentDate}
+            onChange={(date) => setFormData((prev) => ({ ...prev, appointmentDate: date }))}
+            minDate={new Date()}
+            placeholderText="Select Appointment Date"
+            className="pl-12 h-14 w-full bg-background/50 border-gold/20 focus:border-gold rounded-xl transition-all duration-300"
+          />
+        </motion.div>
+
+        {/* Message */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5 }}
           viewport={{ once: true }}
           className="relative"
         >
@@ -177,7 +225,7 @@ const ContactForm = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: 0.6 }}
         viewport={{ once: true }}
       >
         <Button

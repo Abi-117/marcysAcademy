@@ -27,6 +27,7 @@ import AdminMusicProgramEdit from "./admin/AdminMusicProgramEdit";
 import AdminPerformancePrograms from "./admin/AdminPerformancePrograms";
 import AdminPerformanceServiceCreate from "./admin/AdminPerformanceServiceCreate";
 import AdminPerformanceServiceEdit from "./admin/AdminPerformanceServiceEdit";
+import AdminPrograms from "./admin/AdminProgramsPage";
 
 import AdminTestimonials from "./admin/AdminTestimonials";
 import AdminTestimonialCreate from "./admin/AdminTestimonialCreate";
@@ -69,6 +70,7 @@ const App = () => (
   <Route path="/admin/index" element={<AdminIndexPage />} />
   <Route path="/admin/about" element={<AdminAboutPage />} />
   <Route path="/admin/services" element={<AdminServicesPage />} />
+  <Route path="/admin/program" element={<AdminPrograms />} />
   <Route path="/admin/gallery" element={<AdminGallery />} />
   <Route path="/admin/overview" element={<AdminPage />} />
   <Route path="/admin/contact" element={<ContactAdmin />} />

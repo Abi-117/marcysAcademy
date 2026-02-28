@@ -206,7 +206,7 @@ const AdminIndexPage = () => {
         </div>
 
         {/* ABOUT */}
-        <div className="mb-6">
+        <div className="mb-6 text-black">
           <h2 className="text-xl font-bold mb-2">About Section</h2>
 
           <input
@@ -271,8 +271,8 @@ const AdminIndexPage = () => {
         </div>
 
         {/* CTA */}
-        <div className="mb-6">
-          <h2 className="text-xl font-bold mb-2">CTA Section</h2>
+        <div className="mb-6 text-black">
+          <h2 className="text-xl font-bold mb-2 text-white">CTA Section</h2>
 
           <input
             className="border w-full p-2 rounded mb-2"

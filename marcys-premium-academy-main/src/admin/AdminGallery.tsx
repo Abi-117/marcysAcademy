@@ -78,7 +78,7 @@ const AdminGallery = () => {
       <div className="flex-1 p-8 overflow-y-auto">
         <h2 className="text-2xl mb-4">Upload Gallery Image</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 text-black">
           <input
             className="border p-2 w-full"
             placeholder="Title"
@@ -93,12 +93,12 @@ const AdminGallery = () => {
             onChange={(e) => setCategory(e.target.value)}
           />
 
-          <input
+          <input className="text-white"
             type="file"
             onChange={(e) => setImage(e.target.files?.[0] || null)}
           />
 
-          <button className="bg-black text-white px-4 py-2">
+          <button className="bg-blue-600 text-white px-4 py-2">
             Upload
           </button>
         </form>

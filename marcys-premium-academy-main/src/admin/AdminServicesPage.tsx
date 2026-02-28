@@ -195,7 +195,7 @@ const AdminServicesPage = () => {
         <h2 className="text-2xl font-bold mb-6">Manage Services</h2>
 
         {/* FORM */}
-        <form onSubmit={handleSubmit} className="space-y-4 mb-10">
+        <form onSubmit={handleSubmit} className="space-y-4 mb-10 text-black">
           <input
             placeholder="Title"
             value={form.title}

@@ -43,7 +43,7 @@ const Overview = () => {
     if (heroes.length === 0) return;
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % heroes.length);
-    }, 5000);
+    }, 15000);
     return () => clearInterval(interval);
   }, [heroes]);
 
@@ -123,7 +123,7 @@ const Overview = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
+                transition={{ duration: 2.5, ease: "easeInOut" }}
                 className="absolute inset-0 w-full h-full object-cover scale-105"
               />
             )}
@@ -136,7 +136,7 @@ const Overview = () => {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
+            className="text-5xl md:text-6xl font-bold mb-6 mt-14 leading-tight"
           >
             Where Talent Meets Excellence
           </motion.h1>

@@ -7,6 +7,7 @@ const Sidebar = () => {
     { name: "Home", path: "index" },
     { name: "About", path: "about" },
     { name: "Services", path: "services" },
+    { name: "ServicesProgram", path: "program" },
     { name: "Gallery", path: "gallery" },
     { name: "Overview", path: "overview" },
     { name: "Contact", path: "contact" },
