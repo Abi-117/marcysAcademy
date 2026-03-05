@@ -9,6 +9,7 @@ const AdminGallery = () => {
   const [category, setCategory] = useState("Performance");
   const [image, setImage] = useState<File | null>(null);
   const [items, setItems] = useState<any[]>([]);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   /* ================= FETCH GALLERY ================= */
   const fetchItems = async () => {
@@ -26,31 +27,40 @@ const AdminGallery = () => {
 
   /* ================= UPLOAD ================= */
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!title || !image) {
-      alert("Title and image are required!");
-      return;
-    }
+  if (!title) {
+    alert("Title required");
+    return;
+  }
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("category", category);
-    formData.append("image", image);
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("category", category);
+  if (image) formData.append("image", image);
 
-    try {
+  try {
+    if (editingId) {
+      await axios.put(`${API_URL}/api/gallery/${editingId}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      setEditingId(null);
+    } else {
       await axios.post(`${API_URL}/api/gallery`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-
-      setTitle("");
-      setCategory("Performance");
-      setImage(null);
-      fetchItems();
-    } catch (err) {
-      console.error("Error uploading image:", err);
     }
-  };
+
+    setTitle("");
+    setCategory("Performance");
+    setImage(null);
+
+    fetchItems();
+
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   /* ================= DELETE ================= */
   const handleDelete = async (id: string) => {
@@ -99,8 +109,8 @@ const AdminGallery = () => {
           />
 
           <button className="bg-blue-600 text-white px-4 py-2">
-            Upload
-          </button>
+  {editingId ? "Update" : "Upload"}
+</button>
         </form>
 
         <div className="grid grid-cols-3 gap-4 mt-10">
@@ -111,6 +121,16 @@ const AdminGallery = () => {
                 className="w-full h-48 object-cover"
               />
               <p className="mt-2 font-semibold">{item.title}</p>
+              <button
+  onClick={() => {
+    setTitle(item.title);
+    setCategory(item.category);
+    setEditingId(item._id);
+  }}
+  className="absolute top-2 left-2 bg-blue-900 text-white px-2 py-1 text-sm rounded"
+>
+  Edit
+</button>
               <button
                 onClick={() => handleDelete(item._id)}
                 className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-sm rounded"

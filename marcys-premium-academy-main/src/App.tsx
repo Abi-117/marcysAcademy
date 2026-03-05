@@ -37,6 +37,9 @@ import AdminResults from "./admin/AdminResults";
 import AdminResultCreate from "./admin/AdminResultCreate";
 import AdminResultEdit from "./admin/AdminResultEdit";
 
+import AdminAwards from "./admin/AdminAwardsPage";
+import AdminBookPage from "./admin/AdminBookPage";
+
 
 
 import NotFound from "./pages/NotFound";
@@ -100,6 +103,8 @@ const App = () => (
   <Route path="/admin/testimonials/create" element={<AdminTestimonialCreate />} />
   <Route path="/admin/testimonials/edit/:id" element={<AdminTestimonialEdit />} />
    <Route path="/admin/enquiries" element={<EnquiryAdmin />} />
+   <Route path="/admin/awards" element={<AdminAwards />} />
+  <Route path="/admin/book" element={<AdminBookPage />} />
 
   {/* CATCH-ALL */}
   <Route path="*" element={<NotFound />} />

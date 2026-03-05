@@ -57,4 +57,43 @@ router.delete("/:id", async (req, res) => {
   res.json({ message: "Deleted" });
 });
 
+// ✅ UPDATE
+router.put("/:id", upload.single("image"), async (req, res) => {
+  try {
+    const { title, category } = req.body;
+
+    const item = await Gallery.findById(req.params.id);
+    if (!item) return res.status(404).json({ message: "Not found" });
+
+    let imageUrl = item.image;
+
+    // If new image uploaded → upload to cloudinary
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: "gallery" },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        );
+        stream.end(req.file.buffer);
+      });
+
+      imageUrl = result.secure_url;
+    }
+
+    item.title = title;
+    item.category = category;
+    item.image = imageUrl;
+
+    await item.save();
+
+    res.json(item);
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 export default router;

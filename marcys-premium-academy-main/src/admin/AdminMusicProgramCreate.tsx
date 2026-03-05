@@ -88,8 +88,8 @@ const AdminMusicProgramCreate = () => {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <div className="flex-1 p-8">
-        <h1 className="text-3xl font-bold mb-6">Add Music Program</h1>
+      <div className="flex-1 text-black p-8">
+        <h1 className="text-3xl font-bold text-white mb-6">Add Music Program</h1>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
           <input

@@ -7,6 +7,7 @@ import SectionHeading from "@/components/SectionHeading";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import GoogleReviews from "@/components/GoogleReviews";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import BookPromotion from "@/components/BookPromotionSection";
 
 interface Value {
   icon: string;
@@ -127,6 +128,35 @@ const About = () => {
           </motion.div>
         </div>
       </section>
+      {/* Mission Vision */}
+<section className="py-20">
+  <div className="container-premium grid md:grid-cols-2 gap-10">
+
+    {/* Mission */}
+    <div className="premium-card p-8 rounded-xl">
+      <h2 className="text-2xl font-bold text-gold mb-4">
+        Our Mission
+      </h2>
+
+      <p className="text-muted-foreground whitespace-pre-line">
+        {about.mission}
+      </p>
+    </div>
+
+    {/* Vision */}
+    <div className="premium-card p-8 rounded-xl">
+      <h2 className="text-2xl font-bold text-gold mb-4">
+        Our Vision
+      </h2>
+
+      <p className="text-muted-foreground whitespace-pre-line">
+        {about.vision}
+      </p>
+    </div>
+
+  </div>
+</section>
+<BookPromotion />
 
       <WhyChooseUs />
       <GoogleReviews />

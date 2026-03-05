@@ -41,7 +41,7 @@ const AdminResultEdit = () => {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 text-black">
         <h1 className="text-3xl font-bold mb-6">Edit Result</h1>
 
         <form className="space-y-4" onSubmit={handleSubmit}>

@@ -21,8 +21,8 @@ const AdminTestimonialCreate = () => {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <div className="flex-1 p-8">
-      <h1 className="text-3xl mb-6">Add Testimonial</h1>
+      <div className="flex-1 text-black p-8">
+        <h1 className="text-3xl text-white font-bold mb-6">Add Testimonial</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <input

@@ -11,7 +11,9 @@ const Sidebar = () => {
     { name: "Gallery", path: "gallery" },
     { name: "Overview", path: "overview" },
     { name: "Contact", path: "contact" },
-    
+    { name: "Awards", path: "awards" },
+   
+    { name: "Book", path: "book" },
   ];
 
   const handleLogout = () => {

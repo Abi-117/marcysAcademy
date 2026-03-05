@@ -61,4 +61,19 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const service = await PerformanceService.findById(req.params.id);
+
+    if (!service) {
+      return res.status(404).json({ message: "Service not found" });
+    }
+
+    res.json(service);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 export default router;

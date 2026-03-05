@@ -1,39 +1,81 @@
-import { motion } from 'framer-motion';
-import { Award } from 'lucide-react';
-import SectionHeading from './SectionHeading';
-import awards1 from '@/assets/award1.jpeg';
-import awards2 from '@/assets/awards-2.jpg';
-import awards3 from '@/assets/trinity.png';
-import awards4 from '@/assets/rsl.jpg';
+"use client";
 
-const certifications = [
-  {
-    name: 'Trinity College London',
-    subtitle: 'TCL Certified',
-    description: 'Internationally recognized music certification',
-    image: awards3, 
-  },
-  {
-    name: 'RockSchool Awards',
-    subtitle: 'RSL, London UK',
-    description: 'Contemporary music education syllabus',
-    image: awards4, 
-  },
-];
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import SectionHeading from "./SectionHeading";
 
+const API = import.meta.env.VITE_API_URL;
+
+interface Certification {
+  _id: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  image: string;
+}
 
 const AwardsCertifications = () => {
+
+  const [certifications, setCertifications] = useState<Certification[]>([]);
+  const [images, setImages] = useState<string[]>([]);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  // FETCH DATA
+  useEffect(() => {
+
+    const fetchAwards = async () => {
+
+      try {
+
+        const res = await axios.get(`${API}/api/awards`);
+
+        setCertifications(res.data.certifications || []);
+        setImages(res.data.images || []);
+
+      } catch (err) {
+        console.error("Failed to fetch awards", err);
+      }
+
+    };
+
+    fetchAwards();
+
+  }, []);
+
+  // AUTO SLIDER
+  useEffect(() => {
+
+    if (images.length === 0) return;
+
+    const interval = setInterval(() => {
+
+      setCurrentImage((prev) =>
+        prev === images.length - 1 ? 0 : prev + 1
+      );
+
+    }, 3000); // 3 seconds
+
+    return () => clearInterval(interval);
+
+  }, [images]);
+
   return (
     <section className="py-24 relative overflow-hidden">
+
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background-secondary to-background" />
-      
+
       <div className="container-premium relative z-10">
+
         <SectionHeading
           title="Awards & Certifications"
           subtitle="Internationally recognized excellence in music education"
         />
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+
+          {/* LEFT IMAGE SLIDER */}
+
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -41,15 +83,28 @@ const AwardsCertifications = () => {
             viewport={{ once: true }}
             className="relative"
           >
-           <div className="overflow-hidden flex justify-center items-center">
-  <img
-    src={awards1}
-    alt="Academy Certifications"
-    className="w-full sm:w-auto h-64 sm:h-96 object-cover sm:pl-0"
-  />
-</div>
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gold/10 rounded-xl -z-10" />
+
+            <div className="overflow-hidden flex justify-center items-center">
+
+              {images.length > 0 && (
+
+                <motion.img
+                  key={currentImage}
+                  src={images[currentImage]}
+                  alt="Academy Certifications"
+                  className="w-full sm:w-auto h-64 sm:h-96 object-cover rounded-lg"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8 }}
+                />
+
+              )}
+
+            </div>
+
           </motion.div>
+
+          {/* RIGHT SIDE CARDS */}
 
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -58,56 +113,50 @@ const AwardsCertifications = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            {certifications.map((cert, index) => (
+
+            {certifications.map((cert) => (
+
               <div
-                key={cert.name}
+                key={cert._id}
                 className="premium-card rounded-xl p-6 flex items-start gap-4 group hover:border-gold/30 transition-all duration-300"
               >
-                <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors duration-300">
+
+                <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+
                   <img
-                    src={cert.image} // ✅ use the card's own image
+                    src={cert.image}
                     alt={cert.name}
                     className="w-full h-full object-cover rounded-full"
                   />
-                </div>
 
+                </div>
 
                 <div>
-                  <h4 className="font-display text-xl font-semibold text-foreground mb-1 group-hover:text-gold transition-colors duration-300">
+
+                  <h4 className="font-display text-xl font-semibold text-foreground mb-1">
                     {cert.name}
                   </h4>
-                  <p className="text-gold text-sm font-medium mb-2">{cert.subtitle}</p>
-                  <p className="text-muted-foreground">{cert.description}</p>
+
+                  <p className="text-gold text-sm font-medium mb-2">
+                    {cert.subtitle}
+                  </p>
+
+                  <p className="text-muted-foreground">
+                    {cert.description}
+                  </p>
+
                 </div>
+
               </div>
+
             ))}
+
           </motion.div>
+
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="relative rounded-2xl overflow-hidden border border-gold/20"
-        >
-          <img
-            src={awards2}
-            alt="Academy Awards Collection"
-            className="w-full h-64 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent flex items-center p-8 md:p-12">
-            <div>
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
-                Over <span className="text-gold-gradient">1000+ Awards</span>
-              </h3>
-              <p className="text-muted-foreground max-w-md">
-                Our students and academy have been recognized with numerous prestigious awards and achievements.
-              </p>
-            </div>
-          </div>
-        </motion.div>
       </div>
+
     </section>
   );
 };

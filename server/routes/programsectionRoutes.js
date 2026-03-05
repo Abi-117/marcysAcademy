@@ -44,4 +44,46 @@ router.put("/:section", upload.single("image"), async (req, res) => {
   }
 });
 
+router.put("/:section", upload.single("image"), async (req, res) => {
+  try {
+    const { title, paragraphs } = req.body;
+
+    // Parse paragraphs safely
+    let parsedParagraphs = [];
+    if (paragraphs) {
+      try {
+        parsedParagraphs = JSON.parse(paragraphs);
+      } catch (error) {
+        return res.status(400).json({ message: "Invalid paragraphs format" });
+      }
+    }
+
+    const updateData = {
+      title,
+      paragraphs: parsedParagraphs,
+      section: req.params.section,
+    };
+
+    // If image uploaded
+    if (req.file) {
+      updateData.image = req.file.path;
+    }
+
+    const program = await Program.findOneAndUpdate(
+      { section: req.params.section },
+      updateData,
+      {
+        new: true,
+        upsert: true,
+        setDefaultsOnInsert: true,
+      }
+    );
+
+    res.json(program);
+  } catch (err) {
+    console.error("UPDATE PROGRAM ERROR:", err);
+    res.status(500).json({ error: err.message });
+  }
+})
+
 export default router;
