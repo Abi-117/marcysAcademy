@@ -109,30 +109,14 @@ const Footer = () => {
   whileInView={{ opacity: 1 }}
   transition={{ duration: 0.6, delay: 0.4 }}
   viewport={{ once: true }}
-  className="mt-14 pt-8 border-t border-gold/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground"
+  className="mt-14 pt-8 border-t text-center border-gold/10 md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground"
 >
   {/* Left Side */}
   <p>
     © {currentYear} Marcys Academy of Music & Speech. All rights reserved.
   </p>
 
-  {/* Right Side */}
-  <div className="flex items-center gap-3">
-    <span>Developed by</span>
-
-    <a
-      href="https://zenelaitinfotech.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2 group"
-    >
-      <img
-        src={zenelaitLogo}
-        alt="Zenelait Info Tech"
-        className="h-14 w-28 object-contain bg-white group-hover:scale-105 transition-transform duration-300 rounded-2xl"
-      />
-    </a>
-  </div>
+  
 </motion.div>
 </div>
     </footer>
