@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import "./overview.css";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Music,
@@ -172,49 +173,35 @@ const Overview = () => {
       </section>
 
       {/* ================= PROGRAMS ================= */}
-      <section className="py-24">
-        <div className="container-premium">
-          <SectionHeading title="Programs We Offer" />
+      <div className="mt-20 space-y-16">
+  <div className="marquee w-max">
+    {[...musicPrograms, ...musicPrograms].map((service: any, i) => (
+      <div key={i} className="min-w-[300px]">
+        <EnhancedServiceCard
+          title={service.title}
+          icon={iconMap[service.title] || Music}
+          image={service.image}
+          description={service.description || "Professional structured training."}
+          buttonText="Book Now"
+        />
+      </div>
+    ))}
+  </div>
 
-          <div className="mt-20 space-y-16">
-            <motion.div
-              animate={{ x: ["0%", "-100%"] }}
-              transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-              className="flex gap-8 w-max"
-            >
-              {[...musicPrograms, ...musicPrograms].map((service: any, i) => (
-                <div key={i} className="min-w-[300px]">
-                  <EnhancedServiceCard
-                    title={service.title}
-                    icon={iconMap[service.title] || Music}
-                    image={service.image}
-                    description={service.description || "Professional structured training."}
-                    buttonText="Book Now"
-                  />
-                </div>
-              ))}
-            </motion.div>
-
-            <motion.div
-              animate={{ x: ["-100%", "0%"] }}
-              transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-              className="flex gap-8 w-max"
-            >
-              {[...performancePrograms, ...performancePrograms].map((service: any, i) => (
-                <div key={i} className="min-w-[300px]">
-                  <EnhancedServiceCard
-                    title={service.title}
-                    icon={iconMap[service.title] || Sparkles}
-                    image={service.image}
-                    description={service.description || "Confidence & stage mastery programs."}
-                    buttonText="Book Now"
-                  />
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
+  <div className="marquee w-max">
+    {[...performancePrograms, ...performancePrograms].map((service: any, i) => (
+      <div key={i} className="min-w-[300px]">
+        <EnhancedServiceCard
+          title={service.title}
+          icon={iconMap[service.title] || Sparkles}
+          image={service.image}
+          description={service.description || "Confidence & stage mastery programs."}
+          buttonText="Book Now"
+        />
+      </div>
+    ))}
+  </div>
+</div>
 
       {/* ================= TESTIMONIALS ================= */}
       <section className="py-24 bg-[#111]">
