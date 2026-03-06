@@ -45,9 +45,13 @@ whileInView={{opacity:1,x:0}}
 transition={{duration:0.8}}
 >
 
-<h2 className="text-4xl font-bold mb-4 text-gold">
+<h2 className="text-3xl font-black mb-4 text-gold">
 {book.title}
 </h2>
+
+<h3 className="text-lg mb-4 text-gray-400">
+{book.subtitle}
+</h3>
 
 <p className="mb-6 text-muted-foreground text-justify">
 {book.description}
@@ -60,7 +64,7 @@ target="_blank"
 
 <button className="group flex items-center gap-2 bg-gold px-6 py-3 rounded-lg">
 
-Book Now
+Buy Now
 
 <ArrowRight
 size={24}

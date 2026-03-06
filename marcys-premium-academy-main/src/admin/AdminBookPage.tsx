@@ -8,6 +8,7 @@ const AdminBookPage = () => {
 
 const [book,setBook] = useState({
 title:"",
+subtitle:"",
 description:"",
 image:"",
 amazonLink:""
@@ -80,7 +81,12 @@ placeholder="Title"
 value={book.title}
 onChange={(e)=>setBook({...book,title:e.target.value})}
 />
-
+<input
+className="border p-2 w-full mb-4"
+placeholder="Subtitle"
+value={book.subtitle}
+onChange={(e)=>setBook({...book,subtitle:e.target.value})}
+/>
 <textarea
 className="border p-2 w-full mb-4"
 placeholder="Description"
