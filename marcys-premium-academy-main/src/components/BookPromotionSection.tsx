@@ -45,11 +45,11 @@ whileInView={{opacity:1,x:0}}
 transition={{duration:0.8}}
 >
 
-<h2 className="text-3xl font-black mb-4 text-gold">
+<h2 className="text-3xl font-black mb-4 text-gold text-center">
 {book.title}
 </h2>
 
-<h3 className="text-lg mb-4 text-gray-400">
+<h3 className="text-2xl mb-4 text-gold-gradient text-center">
 {book.subtitle}
 </h3>
 

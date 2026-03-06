@@ -21,7 +21,7 @@ export const saveBook = async (req, res) => {
 
   try {
 
-    const { title, description, image, amazonLink } = req.body;
+    const { title, subtitle, description, image, amazonLink } = req.body;
 
     let book = await Book.findOne();
 
@@ -29,6 +29,7 @@ export const saveBook = async (req, res) => {
 
       book = new Book({
         title,
+        subtitle,
         description,
         image,
         amazonLink,
@@ -37,6 +38,7 @@ export const saveBook = async (req, res) => {
     } else {
 
       book.title = title;
+      book.subtitle = subtitle;
       book.description = description;
       book.image = image;
       book.amazonLink = amazonLink;
