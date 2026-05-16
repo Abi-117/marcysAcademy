@@ -31,15 +31,21 @@ const Footer = () => {
       <h4 className="footer-title">Quick Links</h4>
       <ul className="space-y-3 text-muted-foreground">
         {['Home','About','Classes','Gallery','Contact'].map(link => (
-          <li key={link}>
-            <Link
-              to={link === 'Home' ? '/' : `/${link.toLowerCase()}`}
-              className="hover:text-gold transition-colors"
-            >
-              {link}
-            </Link>
-          </li>
-        ))}
+  <li key={link}>
+    <Link
+      to={
+        link === 'Home'
+          ? '/'
+          : link === 'Classes'
+          ? '/services'
+          : `/${link.toLowerCase()}`
+      }
+      className="hover:text-gold transition-colors"
+    >
+      {link}
+    </Link>
+  </li>
+))}
       </ul>
     </div>
 
