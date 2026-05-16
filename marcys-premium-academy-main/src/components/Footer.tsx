@@ -99,6 +99,9 @@ const Footer = () => {
         <p className="text-muted-foreground text-sm">
           contact@marcysacademy.com
         </p>
+        <p className="text-muted-foreground text-sm">
+          marcysacademy@gmail.com
+        </p>
       </div>
     </div>
 

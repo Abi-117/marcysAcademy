@@ -8,7 +8,7 @@ import logo from "@/assets/music.png";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-  { name: "Services", path: "/services" },
+  { name: "Classes", path: "/services" },
   { name: "Gallery", path: "/gallery" },
   { name: "Overview", path: "/overview" }, 
   { name: "Contact", path: "/contact" },
