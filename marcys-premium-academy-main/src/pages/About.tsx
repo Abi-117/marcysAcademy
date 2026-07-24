@@ -117,7 +117,7 @@ const About = () => {
 
                 <div className="text-center">
                   <h2 className="text-2xl font-bold text-gold">
-                    Ms. Marceline Samuel
+                    Dr. Marceline Samuel
                   </h2>
                   <p className="text-white">
                     Founder and Director of Marcy’s Academy
