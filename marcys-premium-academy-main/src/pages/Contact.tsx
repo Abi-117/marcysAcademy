@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { MapPin } from "lucide-react";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -156,6 +157,17 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
+                <div className="premium-card rounded-xl p-5 flex items-center gap-4">
+  <MapPin className="w-6 h-6 text-gold" />
+  <div>
+    <div className="text-sm text-muted-foreground">
+      Office Address
+    </div>
+    <div className="font-medium text-foreground">
+      {contactData.address}
+    </div>
+  </div>
+</div>
               </div>
 
               {/* WhatsApp Button */}
