@@ -103,7 +103,7 @@ const Footer = () => {
       <div className="space-y-3">
         <p className="text-gold font-semibold text-sm">Reach Out</p>
         <p className="text-muted-foreground text-sm">
-          contact@marcysacademy.com
+          contact@marcyslearn.com
         </p>
         <p className="text-muted-foreground text-sm">
           marcysacademy@gmail.com
