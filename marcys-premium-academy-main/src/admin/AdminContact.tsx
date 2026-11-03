@@ -17,6 +17,7 @@ const ContactAdmin = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [officeHours, setOfficeHours] = useState("");
+  const [address, setAddress] = useState("");
   const [whatsappMsg, setWhatsappMsg] = useState("");
   const [mapUrl, setMapUrl] = useState("");
   const [description, setDescription] = useState("");
@@ -33,6 +34,7 @@ const ContactAdmin = () => {
         setPhone(data.phone || "");
         setEmail(data.email || "");
         setOfficeHours(data.officeHours || "");
+        setAddress(data.address || "");
         setWhatsappMsg(data.whatsappMsg || "");
         setMapUrl(data.mapUrl || "");
         setDescription(data.description || "");
@@ -59,6 +61,7 @@ const ContactAdmin = () => {
           phone,
           email,
           officeHours,
+          address,
           whatsappMsg,
           mapUrl,
           description,
@@ -97,36 +100,50 @@ const ContactAdmin = () => {
           {/* Contact Info */}
           <section className="space-y-6">
             <h2 className="font-semibold text-xl">Contact Info</h2>
+
             <Input
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Phone number"
             />
+
             <Input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email address"
             />
+
             <Input
               value={officeHours}
               onChange={(e) => setOfficeHours(e.target.value)}
               placeholder="Office hours"
+            />
+
+            {/* Address */}
+            <Textarea
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Office address"
+              rows={3}
             />
           </section>
 
           {/* WhatsApp */}
           <section className="space-y-6">
             <h2 className="font-semibold text-xl">WhatsApp</h2>
+
             <Textarea
               value={whatsappMsg}
               onChange={(e) => setWhatsappMsg(e.target.value)}
               placeholder="WhatsApp default message"
             />
+
             <p className="text-sm text-muted-foreground">
               Preview Link:{" "}
               <a
                 href={whatsappLink}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-gold underline"
               >
                 Open WhatsApp
@@ -137,6 +154,7 @@ const ContactAdmin = () => {
           {/* Map */}
           <section className="space-y-6">
             <h2 className="font-semibold text-xl">Map</h2>
+
             <Textarea
               value={mapUrl}
               onChange={(e) => setMapUrl(e.target.value)}
@@ -149,6 +167,7 @@ const ContactAdmin = () => {
             <h2 className="font-semibold text-xl">
               Description / Courses
             </h2>
+
             <Textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}

@@ -6,6 +6,7 @@ const ContactSchema = new mongoose.Schema({
   officeHours: { type: String, required: true },
   whatsappMsg: { type: String, required: true },
   mapUrl: { type: String, required: true },
+  address:{ type: String, required: true },
   description: { type: String, required: true },
 }, { timestamps: true });
 
