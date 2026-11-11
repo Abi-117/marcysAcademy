@@ -5,6 +5,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { name: "Home", path: "index" },
+    { name : "Banner", path: "golden-tales"},
     { name: "About", path: "about" },
     { name: "Services", path: "services" },
     { name: "ServicesProgram", path: "program" },
