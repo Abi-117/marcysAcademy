@@ -177,7 +177,7 @@ const Contact = () => {
       <Mail className="w-6 h-6 text-gold" />
       <div>
         <div className="text-sm text-muted-foreground">
-          Additional Email
+          Alternative Email
         </div>
         <div className="font-medium text-foreground group-hover:text-gold transition-colors">
           {contactData.email2}
