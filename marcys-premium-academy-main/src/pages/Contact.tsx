@@ -158,6 +158,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="premium-card rounded-xl p-5 flex items-center gap-4">
+                 
   <MapPin className="w-6 h-6 text-gold" />
   <div>
     <div className="text-sm text-muted-foreground">
