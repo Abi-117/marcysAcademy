@@ -269,13 +269,14 @@ const Services = () => {
                   {signatureProgram?.paragraphs?.map((p, i) => (
                     <p key={i} className="text-gray-300 mb-6 text-base whitespace-pre-wrap text-justify">{p}</p>
                   ))}
-                </div>
                   <a
     href="tel:9840198348"
     className="inline-block mt-4 px-8 py-3 rounded-lg bg-gold text-black font-bold hover:opacity-90 transition"
   >
     Book Now
   </a>
+                </div>
+                  
               </div>
             </motion.div>
           </div>
