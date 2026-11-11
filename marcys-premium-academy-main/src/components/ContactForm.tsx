@@ -146,6 +146,7 @@ const [classMode, setClassMode] = useState('online');
             required
             className="pl-12 h-14 bg-background/50 border-gold/20 focus:border-gold rounded-xl transition-all duration-300"
           />
+          
         </motion.div>
 
         {/* Email */}

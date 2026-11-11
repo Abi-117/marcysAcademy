@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -15,7 +16,9 @@ const ContactAdmin = () => {
   const [error, setError] = useState<string | null>(null);
 
   const [phone, setPhone] = useState("");
+  const [phone2, setPhone2] = useState("");
   const [email, setEmail] = useState("");
+  const [email2, setEmail2] = useState("");
   const [officeHours, setOfficeHours] = useState("");
   const [address, setAddress] = useState("");
   const [whatsappMsg, setWhatsappMsg] = useState("");
@@ -32,7 +35,9 @@ const ContactAdmin = () => {
         const data = await res.json();
 
         setPhone(data.phone || "");
+        setPhone2(data.phone2 || "");
         setEmail(data.email || "");
+        setEmail2(data.email2 || "");
         setOfficeHours(data.officeHours || "");
         setAddress(data.address || "");
         setWhatsappMsg(data.whatsappMsg || "");
@@ -59,7 +64,9 @@ const ContactAdmin = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           phone,
+          phone2,
           email,
+          email2,
           officeHours,
           address,
           whatsappMsg,
@@ -84,6 +91,7 @@ const ContactAdmin = () => {
   )}`;
 
   if (loading) return <p className="text-center py-16">Loading...</p>;
+
   if (error)
     return <p className="text-center py-16 text-red-500">{error}</p>;
 
@@ -93,6 +101,7 @@ const ContactAdmin = () => {
 
       <div className="flex-1 p-8 overflow-y-auto">
         <main className="container-premium py-16 space-y-12">
+
           <h1 className="text-3xl font-bold text-foreground">
             Contact Page Admin
           </h1>
@@ -101,16 +110,34 @@ const ContactAdmin = () => {
           <section className="space-y-6">
             <h2 className="font-semibold text-xl">Contact Info</h2>
 
+            {/* Primary Phone */}
             <Input
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="Phone number"
+              placeholder="Primary Phone Number"
             />
 
+            {/* Additional Phone */}
             <Input
+              value={phone2}
+              onChange={(e) => setPhone2(e.target.value)}
+              placeholder="Additional Phone Number"
+            />
+
+            {/* Primary Email */}
+            <Input
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email address"
+              placeholder="Primary Email Address"
+            />
+
+            {/* Additional Email */}
+            <Input
+              type="email"
+              value={email2}
+              onChange={(e) => setEmail2(e.target.value)}
+              placeholder="Additional Email Address"
             />
 
             <Input
@@ -176,6 +203,7 @@ const ContactAdmin = () => {
             />
           </section>
 
+          {/* Save */}
           <Button
             onClick={handleSave}
             size="lg"
@@ -184,6 +212,7 @@ const ContactAdmin = () => {
           >
             {saving ? "Saving..." : "Save Changes"}
           </Button>
+
         </main>
       </div>
     </div>

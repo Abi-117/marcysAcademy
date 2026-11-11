@@ -115,61 +115,104 @@ const Contact = () => {
               </div>
 
               {/* Contact Cards */}
-              <div className="space-y-4">
-                <a
-                  href={`tel:${contactData.phone}`}
-                  className="premium-card rounded-xl p-5 flex items-center gap-4 group block"
-                >
-                  <Phone className="w-6 h-6 text-gold" />
-                  <div>
-                    <div className="text-sm text-muted-foreground">
-                      Call Us
-                    </div>
-                    <div className="font-medium text-foreground group-hover:text-gold transition-colors">
-                      {contactData.phone}
-                    </div>
-                  </div>
-                </a>
+              {/* Contact Cards */}
+<div className="space-y-4">
 
-                <a
-                  href={`mailto:${contactData.email}`}
-                  className="premium-card rounded-xl p-5 flex items-center gap-4 group block"
-                >
-                  <Mail className="w-6 h-6 text-gold" />
-                  <div>
-                    <div className="text-sm text-muted-foreground">
-                      Email Us
-                    </div>
-                    <div className="font-medium text-foreground group-hover:text-gold transition-colors">
-                      {contactData.email}
-                    </div>
-                  </div>
-                </a>
-
-                <div className="premium-card rounded-xl p-5 flex items-center gap-4">
-                  <Clock className="w-6 h-6 text-gold" />
-                  <div>
-                    <div className="text-sm text-muted-foreground">
-                      Office Hours
-                    </div>
-                    <div className="font-medium text-foreground">
-                      {contactData.officeHours}
-                    </div>
-                  </div>
-                </div>
-                <div className="premium-card rounded-xl p-5 flex items-center gap-4">
-                 
-  <MapPin className="w-6 h-6 text-gold" />
-  <div>
-    <div className="text-sm text-muted-foreground">
-      Office Address
+  {/* Primary Phone */}
+  <a
+    href={`tel:${contactData.phone}`}
+    className="premium-card rounded-xl p-5 flex items-center gap-4 group block"
+  >
+    <Phone className="w-6 h-6 text-gold" />
+    <div>
+      <div className="text-sm text-muted-foreground">
+        Call Us
+      </div>
+      <div className="font-medium text-foreground group-hover:text-gold transition-colors">
+        {contactData.phone}
+      </div>
     </div>
-    <div className="font-medium text-foreground">
-      {contactData.address}
+  </a>
+
+  {/* Additional Phone */}
+  {contactData.phone2 && (
+    <a
+      href={`tel:${contactData.phone2}`}
+      className="premium-card rounded-xl p-5 flex items-center gap-4 group block"
+    >
+      <Phone className="w-6 h-6 text-gold" />
+      <div>
+        <div className="text-sm text-muted-foreground">
+          Alternative Contact
+        </div>
+        <div className="font-medium text-foreground group-hover:text-gold transition-colors">
+          {contactData.phone2}
+        </div>
+      </div>
+    </a>
+  )}
+
+  {/* Primary Email */}
+  <a
+    href={`mailto:${contactData.email}`}
+    className="premium-card rounded-xl p-5 flex items-center gap-4 group block"
+  >
+    <Mail className="w-6 h-6 text-gold" />
+    <div>
+      <div className="text-sm text-muted-foreground">
+        Email Us
+      </div>
+      <div className="font-medium text-foreground group-hover:text-gold transition-colors">
+        {contactData.email}
+      </div>
+    </div>
+  </a>
+
+  {/* Additional Email */}
+  {contactData.email2 && (
+    <a
+      href={`mailto:${contactData.email2}`}
+      className="premium-card rounded-xl p-5 flex items-center gap-4 group block"
+    >
+      <Mail className="w-6 h-6 text-gold" />
+      <div>
+        <div className="text-sm text-muted-foreground">
+          Additional Email
+        </div>
+        <div className="font-medium text-foreground group-hover:text-gold transition-colors">
+          {contactData.email2}
+        </div>
+      </div>
+    </a>
+  )}
+
+  {/* Office Hours */}
+  <div className="premium-card rounded-xl p-5 flex items-center gap-4">
+    <Clock className="w-6 h-6 text-gold" />
+    <div>
+      <div className="text-sm text-muted-foreground">
+        Office Hours
+      </div>
+      <div className="font-medium text-foreground">
+        {contactData.officeHours}
+      </div>
     </div>
   </div>
+
+  {/* Office Address */}
+  <div className="premium-card rounded-xl p-5 flex items-center gap-4">
+    <MapPin className="w-6 h-6 text-gold" />
+    <div>
+      <div className="text-sm text-muted-foreground">
+        Office Address
+      </div>
+      <div className="font-medium text-foreground">
+        {contactData.address}
+      </div>
+    </div>
+  </div>
+
 </div>
-              </div>
 
               {/* WhatsApp Button */}
               <div className="pt-4">

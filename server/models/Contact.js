@@ -3,6 +3,14 @@ import mongoose from "mongoose";
 const ContactSchema = new mongoose.Schema({
   phone: { type: String, required: true },
   email: { type: String, required: true },
+  phone2: {
+  type: String,
+  default: "",
+},
+email2: {
+  type: String,
+  default: "",
+},
   officeHours: { type: String, required: true },
   whatsappMsg: { type: String, required: true },
   mapUrl: { type: String, required: true },
