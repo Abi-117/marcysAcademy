@@ -22,6 +22,8 @@ import performanceServicesRoutes from "./routes/performance.js";
 import programserviceRoutes from "./routes/programsectionRoutes.js";
 import awardRoutes from "./routes/awardRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
+import goldenTalesRoutes from "./routes/goldenTales.js";
+
 
 dotenv.config();
 const app = express();
@@ -55,6 +57,7 @@ app.use("/api/performance-services", performanceServicesRoutes);
 app.use("/api/program", programserviceRoutes);
 app.use("/api/awards", awardRoutes);
 app.use("/api/book", bookRoutes);
+app.use("/api/golden-tales", goldenTalesRoutes);
 app.get("/", (req, res) => {
   res.send("Backend is live");
 });

@@ -39,6 +39,7 @@ import AdminResultEdit from "./admin/AdminResultEdit";
 
 import AdminAwards from "./admin/AdminAwardsPage";
 import AdminBookPage from "./admin/AdminBookPage";
+import GoldenTalesAdmin from "./admin/GoldenTalesAdmin";
 
 
 
@@ -78,6 +79,10 @@ const App = () => (
   <Route path="/admin/overview" element={<AdminPage />} />
   <Route path="/admin/contact" element={<ContactAdmin />} />
   <Route path="/admin/booknow" element={<EnquiryAdmin />} />
+  <Route
+  path="/admin/golden-tales"
+  element={<GoldenTalesAdmin />}
+/>
 
   {/* HERO SLIDES */}
   <Route path="/admin/hero/create" element={<HeroSlidesAdmin />} />
