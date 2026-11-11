@@ -207,12 +207,27 @@ const Services = () => {
               className="bg-white/5 border border-white/10 backdrop-blur-lg rounded-3xl p-10 md:p-16 shadow-2xl"
             >
               <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h3 className="text-3xl text-gold-gradient font-bold mb-6">{teachersTraining.title}</h3>
-                  {teachersTraining?.paragraphs?.map((p, i) => (
-                    <p key={i} className="text-gray-300 mb-6">{p}</p>
-                  ))}
-                </div>
+               <div>
+  <h3 className="text-3xl text-gold-gradient font-bold mb-6">
+    {teachersTraining.title}
+  </h3>
+
+  {teachersTraining?.paragraphs?.map((p, i) => (
+    <p
+      key={i}
+      className="text-gray-300 mb-6 text-base whitespace-pre-wrap"
+    >
+      {p}
+    </p>
+  ))}
+
+  <a
+    href="tel:9840198348"
+    className="inline-block mt-4 px-8 py-3 rounded-lg bg-gold text-black font-bold hover:opacity-90 transition"
+  >
+    Book Now
+  </a>
+</div>
                 {teachersTraining.image && (
                   <div className="rounded-3xl overflow-hidden border border-gold/20 shadow-xl">
                     <img

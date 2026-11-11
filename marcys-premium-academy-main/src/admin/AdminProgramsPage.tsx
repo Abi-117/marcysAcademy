@@ -172,14 +172,15 @@ const AdminProgramsPage = () => {
         />
 
         {teachersTraining.paragraphs.map((p, i) => (
-          <Textarea
-            key={i}
-            value={p}
-            onChange={(e) =>
-              handleChangeText("teachers", i, e.target.value)
-            }
-            placeholder={`Paragraph ${i + 1}`}
-          />
+         <Textarea
+  key={i}
+  value={p}
+  onChange={(e) =>
+    handleChangeText("teachers", i, e.target.value)
+  }
+  placeholder={`Paragraph ${i + 1}`}
+  className="min-h-[120px] leading-7"
+/>
         ))}
 
         <Input
