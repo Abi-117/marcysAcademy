@@ -405,7 +405,7 @@ const Home = () => {
           </motion.p>
 
           {/* Batch Date */}
-
+{/* 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -425,7 +425,7 @@ const Home = () => {
             >
               {formattedBatchDate}
             </h2>
-          </motion.div>
+          </motion.div> */}
 
           {/* Countdown */}
 
