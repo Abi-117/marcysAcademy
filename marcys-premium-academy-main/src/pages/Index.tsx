@@ -67,10 +67,10 @@ const Index = () => {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-       <Home />
-        {/* <HeroSlider /> */}
+       {/* <Home /> */}
+        <HeroSlider />
 
-        {/* <div className="relative z-10 container-premium pt-24">
+        <div className="relative z-10 container-premium pt-24">
           <span className="inline-block px-4 py-2 rounded-full bg-gold/10 border border-gold/30 text-gold text-sm font-medium mb-6">
             {data.heroText}
           </span>
@@ -94,7 +94,7 @@ const Index = () => {
               {data.heroCTA}
             </button>
           </Link>
-        </div> */}
+        </div>
       </section>
 
       {/* Stats Section */}
